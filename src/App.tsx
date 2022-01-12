@@ -1,11 +1,10 @@
-import logo from "./assets/logo.png";
+import Title from "./components/Title";
 // import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <img src={logo} alt="My pc and me logo of a stick figure on a computer" />
-      <h1>Mypcand.me</h1>
+      <Title />
       <h2>About:</h2>
       Welcome to my website. My name is Luis Perez. I'm a software developer living in Fresno, CA. I learned my 
       basic understanding of coding at Geekwise Acadamy in Fresno. There I learned basic HTML5, CSS, and 
