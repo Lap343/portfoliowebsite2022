@@ -9,8 +9,10 @@ const GlobalStyles = styled.div`
 
   & .content {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
+    font-family: 'Roboto Condensed', sans-serif;
+    margin-left: 2%;
   }
 `
 
@@ -28,3 +30,4 @@ function App() {
 }
 
 export default App;
+
