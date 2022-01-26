@@ -14,16 +14,20 @@ const Title = () => {
 const TitleContainer = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
-    margin-top: 1.5em;
+    position: absolute;
+    right: 2%;
+    top: 2%;
+    padding: 1%;
+    border-radius: 55px;
+    font-size: 3em;
+    background-color: rgba(99, 99, 99, 0.2);
 
     & img{
         padding-right: 0.5em;
         height: auto;
         width: 2em;
     }
-    font-size: 3em;
 `
 
 export default Title;
