@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Projects = () => {
     return(
         <ProjectsContainer>
-            <h2>Things I've done:</h2>
+            <h2>Projects</h2>
             <p>
                 -Websites <br/>
                 -Phone Apps <br/>
