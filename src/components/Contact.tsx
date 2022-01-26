@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Contact = () => {
     return(
         <ProjectsContainer>
-            <h2>How to contact me:</h2>
+            <h2>Contact</h2>
             <p>
                 -Email: luisperez@mypcand.me<br/>
                 -LinkedIn: www.linkedin.com/in/lap343<br/>

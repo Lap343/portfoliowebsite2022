@@ -1,8 +1,9 @@
-import Title from "./components/Title";
+import styled from "styled-components";
+import React from "react";
 import About from "./components/About";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
-import styled from "styled-components";
+import Taskbar from "./components/Taskbar";
 
 const GlobalStyles = styled.div`
   font-family: sans-serif;
@@ -19,12 +20,12 @@ const GlobalStyles = styled.div`
 function App() {
   return (
     <GlobalStyles>
-      <Title />
       <div className="content">
         <About />
         <Projects />
         <Contact />
       </div>
+      <Taskbar />
     </GlobalStyles>
   );
 }
