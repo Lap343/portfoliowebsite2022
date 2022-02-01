@@ -14,6 +14,7 @@ const GlobalStyles = styled.div`
     justify-content: space-evenly;
     font-family: 'Roboto Condensed', sans-serif;
     margin-left: 2%;
+    padding-top: 2em;
   }
 `
 
