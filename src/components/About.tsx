@@ -5,8 +5,8 @@ const About = () => {
     const [dblClicked, setDblClicked] = useState<boolean>(false)
 
     return(
-        <AboutContainer>
-            <h2 onClick={(e) => e.detail === 2 ? (setDblClicked(!dblClicked)) : null } >About</h2>
+        <AboutContainer onClick={(e) => e.detail === 2 && setDblClicked(!dblClicked)} >
+            <h2>About</h2>
             {dblClicked && <p>
                 Welcome to my website. My name is Luis Perez. I'm a software developer living in Fresno, CA. I learned my 
                 basic understanding of coding at Geekwise Acadamy in Fresno. There I learned basic HTML5, CSS, and 

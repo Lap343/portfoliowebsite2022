@@ -5,8 +5,8 @@ const Contact = () => {
     const [dblClicked, setDblClicked] = useState<boolean>(false)
 
     return(
-        <ProjectsContainer>
-            <h2 onClick={(e) => e.detail === 2 ? (setDblClicked(!dblClicked)) : null } >Contact</h2>
+        <ProjectsContainer onClick={(e) => e.detail === 2 && setDblClicked(!dblClicked)} >
+            <h2>Contact</h2>
             {dblClicked && <p>
                 -Email: luisperez@mypcand.me<br/>
                 -LinkedIn: www.linkedin.com/in/lap343<br/>

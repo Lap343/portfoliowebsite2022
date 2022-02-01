@@ -5,8 +5,8 @@ const Projects = () => {
     const [dblClicked, setDblClicked] = useState<boolean>(false)
 
     return(
-        <ProjectsContainer>
-            <h2 onClick={(e) => e.detail === 2 ? (setDblClicked(!dblClicked)) : null } >Projects</h2>
+        <ProjectsContainer onClick={(e) => e.detail === 2 && setDblClicked(!dblClicked)} >
+            <h2>Projects</h2>
             {dblClicked && <p>
                 -Websites <br/>
                 -Phone Apps <br/>
