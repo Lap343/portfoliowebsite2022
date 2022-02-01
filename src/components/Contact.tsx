@@ -6,7 +6,7 @@ const Contact = () => {
 
     return(
         <ProjectsContainer>
-            <h2 onClick={() => setDblClicked(!dblClicked)} >Contact</h2>
+            <h2 onClick={(e) => e.detail === 2 ? (setDblClicked(!dblClicked)) : null } >Contact</h2>
             {dblClicked && <p>
                 -Email: luisperez@mypcand.me<br/>
                 -LinkedIn: www.linkedin.com/in/lap343<br/>

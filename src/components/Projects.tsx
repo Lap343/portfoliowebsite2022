@@ -6,7 +6,7 @@ const Projects = () => {
 
     return(
         <ProjectsContainer>
-            <h2 onClick={() => setDblClicked(!dblClicked)} >Projects</h2>
+            <h2 onClick={(e) => e.detail === 2 ? (setDblClicked(!dblClicked)) : null } >Projects</h2>
             {dblClicked && <p>
                 -Websites <br/>
                 -Phone Apps <br/>
