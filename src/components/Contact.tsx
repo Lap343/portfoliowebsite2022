@@ -1,24 +1,28 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { ContentInfoContainer } from "./About";
 
 const Contact = () => {
     const [dblClicked, setDblClicked] = useState<boolean>(false)
 
     return(
-        <ProjectsContainer onClick={(e) => e.detail === 2 && setDblClicked(!dblClicked)} >
+        <ContactContainer onClick={(e) => e.detail === 2 && setDblClicked(!dblClicked)} >
             <h2>Contact</h2>
-            {dblClicked && <p>
-                -Email: luisperez@mypcand.me<br/>
-                -LinkedIn: www.linkedin.com/in/lap343<br/>
-                -Github: https://github.com/Lap343<br/>
-                -Twitter: @lap343<br/>
-                -Raven coordinates/ sky-write over: 36.7378° N, 119.7871° W
-            </p>}
-        </ProjectsContainer>
+            {dblClicked && <ContentInfoContainer>
+                <h3>Contact me:</h3>
+                <p>
+                    -Email: luisperez@mypcand.me<br/>
+                    -LinkedIn: www.linkedin.com/in/lap343<br/>
+                    -Github: https://github.com/Lap343<br/>
+                    -Twitter: @lap343<br/>
+                    -Raven coordinates/ sky-write over: 36.7378° N, 119.7871° W
+                </p>
+            </ContentInfoContainer>}
+        </ContactContainer>
     )
 }
 
-const ProjectsContainer = styled.div`
+const ContactContainer = styled.div`
     background-image: url("folder.png");
     background-size: cover;
     background-position: center;
