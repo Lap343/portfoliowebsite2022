@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import logo from "../assets/logo.png";
 import bluetooth from "../assets/bluetooth.png";
@@ -6,6 +6,21 @@ import wifi from "../assets/wifi.png";
 import speaker from "../assets/speaker.png";
 
 const Taskbar = () => {
+
+    const [date, setDate] = useState(new Date());
+
+    let time = date.toLocaleTimeString().slice(0,5) + date.toLocaleTimeString().slice(8)
+
+    const updateClock = () => {
+        setTimeout(() => {
+            setDate(new Date())
+        }, 15000)
+    }
+
+    useEffect(() => {
+      updateClock()
+    }, [date])
+
     return(
         <TaskbarContainer>
             <LeftContainer>
@@ -17,8 +32,8 @@ const Taskbar = () => {
                 <img className="wifi" src={wifi} alt="a wifi icon" />
                 <img className="speaker" src={speaker} alt="a speaker icon" />
                 <TimeContainer>
-                    <div>11:25 AM</div>
-                    <div>1/26/2022</div>
+                    <div>{time}</div>
+                    <div>{date.toLocaleDateString()}</div>
                 </TimeContainer>
             </RightContainer>
         </TaskbarContainer>
