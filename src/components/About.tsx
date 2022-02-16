@@ -24,11 +24,11 @@ const About = () => {
                     JavaSript. After Geekwise, I went on to expand my knowledge through online courses and making WordPress 
                     websites for business at an accounting firm. Now I am in a wonderful opprotunity as a React apprentice at 
                     Alphaworks in Fresno, CA.
-            
-                    <p>-Website programmer and designer</p>
-                    <p>-Game Developer</p>
-                    <p>-Dad joke/ dry humor enthusiast</p>
                 </p>
+                <p>-Website programmer and designer</p>
+                <p>-Game Developer</p>
+                <p>-Dad joke/ dry humor enthusiast</p>
+                
                 <div onClick={() => setDblClicked(!dblClicked)} >X</div>
             </ContentInfoContainer>}
         </>
