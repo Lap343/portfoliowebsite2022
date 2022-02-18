@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { ContentInfoContainer } from "./About";
+// Npm imports
+import React, { useState } from 'react';
+//Style imports
+import { ContentInfoContainer, ProjectsContainer } from '../styles';
 
 const Projects = () => {
     let fileOrder = 2
@@ -24,25 +25,5 @@ const Projects = () => {
         </>
     )
 }
-
-const ProjectsContainer = styled.div`
-    z-index: 10;
-    background-image: url("folder.png");
-    background-size: cover;
-    background-position: center;
-    width: 9em;
-    height: auto;
-    padding-top: 2em;
-    margin-top: 2em;
-    
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-
-    & h2{
-        padding-left: 0.5em;
-    }
-`
 
 export default Projects;
