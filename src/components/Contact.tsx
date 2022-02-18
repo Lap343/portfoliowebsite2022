@@ -1,7 +1,7 @@
 // Npm imorts
 import React, { useState } from 'react';
 // Style imports
-import { ContentInfoContainer, ContactContainer } from '../styles';
+import { ContentInfoContainer, ContactContainer } from 'styles';
 
 const Contact = () => {
     let fileOrder = 3;

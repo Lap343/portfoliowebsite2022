@@ -2,10 +2,12 @@
 import React from "react";
 import styled from "styled-components";
 // Component imports
-import About from "./components/About";
-import Projects from "./components/Projects";
-import Contact from "./components/Contact";
-import Taskbar from "./components/Taskbar";
+import {
+  About,
+  Projects,
+  Contact,
+  Taskbar
+} from "components";
 
 const AppStyles = styled.div`
   font-family: sans-serif;

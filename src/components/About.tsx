@@ -1,7 +1,7 @@
 // Npm imports
 import React, { useState } from 'react';
 // Style imports
-import { AboutContainer, ContentInfoContainer } from '../styles';
+import { AboutContainer, ContentInfoContainer } from 'styles';
 
 
 const About = () => {

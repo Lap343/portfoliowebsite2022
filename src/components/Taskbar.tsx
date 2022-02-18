@@ -1,17 +1,17 @@
 // Npm imports
 import React, { useState, useEffect } from 'react';
 // Image imports
-import logo from "../assets/logo.png";
-import bluetooth from "../assets/bluetooth.png";
-import wifi from "../assets/wifi.png";
-import speaker from "../assets/speaker.png";
+import logo from "assets/logo.png";
+import bluetooth from "assets/bluetooth.png";
+import wifi from "assets/wifi.png";
+import speaker from "assets/speaker.png";
 // Style imports
 import { 
     TaskbarContainer,
     LeftContainer,
     RightContainer,
     TimeContainer
-} from '../styles';
+} from 'styles'
 
 const Taskbar = () => {
 

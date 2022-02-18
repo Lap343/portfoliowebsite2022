@@ -1,7 +1,7 @@
 // Npm imports
 import React, { useState } from 'react';
 //Style imports
-import { ContentInfoContainer, ProjectsContainer } from '../styles';
+import { ContentInfoContainer, ProjectsContainer } from 'styles';
 
 const Projects = () => {
     let fileOrder = 2
