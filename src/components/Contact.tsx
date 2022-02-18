@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { ContentInfoContainer } from "./About";
+// Npm imorts
+import React, { useState } from 'react';
+// Style imports
+import { ContentInfoContainer, ContactContainer } from 'styles';
 
 const Contact = () => {
-    let fileOrder = 3
+    let fileOrder = 3;
 
-    const [dblClicked, setDblClicked] = useState<boolean>(false)
+    const [dblClicked, setDblClicked] = useState<boolean>(false);
 
     return(
         <>
@@ -26,25 +27,5 @@ const Contact = () => {
         </>
     )
 }
-
-const ContactContainer = styled.div`
-    z-index: 10;
-    background-image: url("folder.png");
-    background-size: cover;
-    background-position: center;
-    width: 9em;
-    height: auto;
-    padding-top: 2em;
-    margin-top: 2em;
-    
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-
-    & h2{
-        padding-left: 0.5em;
-    }
-`
 
 export default Contact;

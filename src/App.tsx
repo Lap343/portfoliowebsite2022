@@ -1,11 +1,15 @@
-import styled from "styled-components";
+// Npm imports
 import React from "react";
-import About from "./components/About";
-import Projects from "./components/Projects";
-import Contact from "./components/Contact";
-import Taskbar from "./components/Taskbar";
+import styled from "styled-components";
+// Component imports
+import {
+  About,
+  Projects,
+  Contact,
+  Taskbar
+} from "components";
 
-const GlobalStyles = styled.div`
+const AppStyles = styled.div`
   font-family: sans-serif;
 
   & .content {
@@ -20,14 +24,14 @@ const GlobalStyles = styled.div`
 
 function App() {
   return (
-    <GlobalStyles>
+    <AppStyles>
       <div className="content">
         <About />
         <Projects />
         <Contact />
       </div>
       <Taskbar />
-    </GlobalStyles>
+    </AppStyles>
   );
 }
 
