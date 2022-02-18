@@ -15,7 +15,7 @@ const Bluetooth = () => {
 
     return(
         <>
-            < BluetoothImg 
+            <BluetoothImg 
                 className="bluetooth" 
                 src={bluetooth} 
                 alt="a bluetooth icon" 
@@ -23,22 +23,22 @@ const Bluetooth = () => {
                 onMouseLeave={() => setHovered(false)}
                 hovered={hovered}
             />
-            { hovered && <BluetoothPopUp>
+            {hovered && <BluetoothPopUp onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
                 <img src={abluetooth} alt="a blue tooth" />
             </BluetoothPopUp>}
         </>
     )
 };
 
+const BluetoothImg = styled.img<Props>`
+    border: ${props => props.hovered ? 'white' : 'none'} solid 1px;
+`
 const BluetoothPopUp = styled.div`
     background-color: white;
     border: solid 1px black;
     position: relative;
-    bottom: 3em;
+    bottom: 2.5em;
     margin-left: -2.5em;
-`
-const BluetoothImg = styled.img<Props>`
-    border: ${props => props.hovered ? 'white' : 'none'} solid 1px;
 `
 
 export default Bluetooth;
