@@ -42,5 +42,5 @@ export const TimeContainer = styled.div`
     flex-direction: column;
     align-items: center;
     color: white;
-    padding-right: 1.25em;
+    padding: 0 1.25em;
 `
