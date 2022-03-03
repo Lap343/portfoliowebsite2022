@@ -1,10 +1,15 @@
 // Npm imports
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 // Style imports
 import { AboutContainer, ContentInfoContainer } from 'styles';
-
+// Interface imports
+import { RootState } from 'App';
 
 const About = () => {
+
+    const theme = useSelector((state: RootState) => state.theme.currentTheme);
+
     let fileOrder = 1
 
     const [dblClicked, setDblClicked] = useState<boolean>(false)
@@ -14,7 +19,7 @@ const About = () => {
             <AboutContainer onClick={(e) => e.detail === 2 && setDblClicked(true)} >
                 <h2>About</h2>
             </AboutContainer>
-            {dblClicked && <ContentInfoContainer top="6em" order={fileOrder}>
+            {dblClicked && <ContentInfoContainer theme={theme} top="6em" order={fileOrder}>
                 <h3>About Luis Perez:</h3>
                 <p>
                     Welcome to my website. My name is Luis Perez. I'm a software developer living in Fresno, CA. I learned my 

@@ -7,8 +7,6 @@ const Globe = () => {
 
     const earthMesh = useRef<THREE.Mesh>();
 
-    console.log(earthMesh.current);
-
     const colorMap = useLoader(TextureLoader, 'earth.jpg');
  
     useFrame(({ clock }) => {

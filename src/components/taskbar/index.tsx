@@ -14,6 +14,7 @@ import Loaction from './Location';
 import Bluetooth from './Bluetooth';
 import Wifi from './Wifi';
 import Speaker from './Speaker';
+import ThemeBtn from './ThemeBtn';
 
 const Taskbar = () => {
 
@@ -41,6 +42,7 @@ const Taskbar = () => {
 
             <RightContainer>
 
+                <ThemeBtn />
                 <Loaction />
                 <Bluetooth />
                 <Wifi />
