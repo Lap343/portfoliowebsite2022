@@ -1,9 +1,15 @@
 // Npm imports
 import React, { useState } from 'react';
-//Style imports
+import { useSelector } from 'react-redux';
+// Style imports
 import { ContentInfoContainer, ProjectsContainer } from 'styles';
+// Interface imports
+import { RootState } from 'App';
 
 const Projects = () => {
+
+    const theme = useSelector((state: RootState) => state.theme.currentTheme);
+
     let fileOrder = 2
 
     const [dblClicked, setDblClicked] = useState<boolean>(false)
@@ -13,7 +19,7 @@ const Projects = () => {
             <ProjectsContainer onClick={(e) => e.detail === 2 && setDblClicked(true)} >
                 <h2>Projects</h2>
             </ProjectsContainer>
-            {dblClicked && <ContentInfoContainer top="14em" order={fileOrder}>
+            {dblClicked && <ContentInfoContainer theme={theme} top="14em" order={fileOrder}>
                 <h3>My Projects:</h3>
                 <p>
                     -Websites <br/>
