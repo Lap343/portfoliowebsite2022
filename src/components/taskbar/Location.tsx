@@ -21,7 +21,6 @@ const Location = () => {
             <LocationImg 
                 onMouseEnter={() => setHovered(true)}
                 onMouseLeave={() => setHovered(false)}
-                hovered={hovered}
             >
                 <img src={location} alt="a location icon" />
             </LocationImg>
@@ -36,7 +35,7 @@ const Location = () => {
     )
 };
 
-const LocationImg = styled.div<Props>`
+const LocationImg = styled.div`
     height: 2em;
     width: 2em;
     display: flex;

@@ -61,7 +61,7 @@ const BluetoothPopUp = styled.div<Props>`
     position: relative;
     bottom: 4.2em;
     left: 0.3em;
-    margin-left: -3.4em;
+    margin-left: -3.375em;
     animation: ${fadeIn} 0.75s linear forwards;
     border-radius: 25%;
     padding: 0 0 0 0.75em;
