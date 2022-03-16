@@ -11,6 +11,8 @@ const GlobalStyles = createGlobalStyle<Props>`
         margin: 0;
         height: 100vh;
         width: 100vw;
+        overflow: hidden;
+        background-color: black;
     }
 `
 

@@ -18,9 +18,8 @@ export const LeftContainer = styled.div`
     align-items: center;
     border-radius: 55px;
     font-size: 2em;
-    color: white;
 
-    & img{
+    & .logo{
         padding: 0 0.25em;
         height: auto;
         width: 1em;
