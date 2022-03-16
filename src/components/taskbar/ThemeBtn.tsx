@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
+import { motion } from "framer-motion";
 // Redux imports
 import { changeTheme } from 'redux/themeSlice';
 // Styles import
@@ -28,7 +29,7 @@ const ThemeBtn = () => {
             <div>
                 <SunImg src={sun} alt="the sun" clicked={clicked} />
                 <MoonImg src={moon} alt="the moon" clicked={clicked} />
-                <div></div>
+                <motion.div layout></motion.div>
             </div>
         </ThemeBtnStyle>
     )

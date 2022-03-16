@@ -1,7 +1,5 @@
 // Npm imports
 import React, { useState, useEffect } from 'react';
-// Image imports
-import logo from "assets/logo.png";
 // Style imports
 import { 
     TaskbarContainer,
@@ -10,6 +8,8 @@ import {
     TimeContainer
 } from 'styles';
 // Component imports
+import Logo from './Logo';
+import WebsiteName from './WebsiteName';
 import Loaction from './Location';
 import Bluetooth from './Bluetooth';
 import Wifi from './Wifi';
@@ -36,8 +36,8 @@ const Taskbar = () => {
         <TaskbarContainer>
 
             <LeftContainer>
-                <img src={logo} alt="My pc and me logo of a stick figure on a computer" />
-                <div>Mypcand.me</div>
+                <Logo />
+                <WebsiteName />
             </LeftContainer>
 
             <RightContainer>
