@@ -1,5 +1,5 @@
 // Npm imports
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { motion } from "framer-motion";
 
 interface Props {
@@ -8,26 +8,6 @@ interface Props {
     theme: string
 }
 
-const enlarge = (x:number) => keyframes`
-    0%{
-        width: 0em;
-        height: .1em;
-        padding: 0;
-        left: 10em;
-    }
-    50%{
-        width: 10em;
-        height: .1em;
-        padding: 0;
-        left: (15 + (${x} * 4))em;
-    }
-    100%{
-        width: 30em;
-        height: 18em;
-        padding: 2em 1em;
-        left: (20 + (${x} * 4))em;
-    }
-`
 export const ContentInfoContainer = styled(motion.div)<Props>`
     width: 30em;
     height: 18em;
@@ -41,8 +21,6 @@ export const ContentInfoContainer = styled(motion.div)<Props>`
     left: ${({ order }) => (order * 4) + 10}em; // Have the file move by two em to the right depending on the number of file clicked
     z-index: ${({ order }) => order}; // Have the z-index increase by one depending on the numbers of files open
     overflow: hidden;
-
-    /* animation: ${({ order }) => enlarge(order)} 1.5s forwards ease-in-out; */
 
     & div{
         position: absolute;
