@@ -72,7 +72,7 @@ const Logo = () => {
                     <motion.path 
                         id="leg" 
                         d="M387.5 403L296.5 345.5L181 403" 
-                        stroke="black" stroke-width="14" stroke-linecap="round"
+                        stroke="black" strokeWidth="14" strokeLinecap="round"
                         variants={pathVariants}
                     />
                     <motion.path 

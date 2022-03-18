@@ -43,9 +43,9 @@ const WebsiteName = () => {
                 variants={pathVariants} 
                 id="Mypcand.me" 
                 fill="white" 
-                font-family="Roboto" 
-                font-size="36" 
-                letter-spacing="0em"
+                fontFamily="Roboto" 
+                fontSize="36" 
+                letterSpacing="0em"
             >
                 <tspan x="-2" y="27.3047">Mypcand.me</tspan>
             </motion.text>

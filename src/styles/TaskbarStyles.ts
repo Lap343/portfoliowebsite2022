@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const TaskbarContainer = styled.div`
+    z-index: 1000;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

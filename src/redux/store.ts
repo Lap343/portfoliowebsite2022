@@ -2,10 +2,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 // Reducer imports
 import themeReducers from './themeSlice';
+import fileOrderReducers from './fileOrderSlice';
 
 export const store = configureStore({
   reducer: {
       theme: themeReducers,
+      fileOrder: fileOrderReducers,
   },
 })
 
