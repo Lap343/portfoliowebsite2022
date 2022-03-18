@@ -1,5 +1,5 @@
 // Npm imports
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 // Component imports
@@ -14,22 +14,25 @@ import GlobalStyles from 'styles/GlobalStyles';
 
 export interface RootState {
   theme: {
-    currentTheme: string
-  }
+    currentTheme: string,
+  },
+  fileOrder: number[]
 }
 
 function App() {
+
+  const appRef = useRef(null);
 
   const theme = useSelector((state: RootState) => state.theme.currentTheme);
 
   return (
     <>
       <GlobalStyles theme={theme} />
-      <AppStyles>
+      <AppStyles ref={appRef}>
         <div className="content">
-          <About />
-          <Projects />
-          <Contact />
+          <About appRef={appRef} />
+          <Projects appRef={appRef} />
+          <Contact appRef={appRef} />
         </div>
         <Taskbar />
       </AppStyles>
@@ -39,6 +42,8 @@ function App() {
 
 const AppStyles = styled.div`
   font-family: sans-serif;
+  height: 100vh;
+  width: 100vw;
 
   & .content {
     display: flex;

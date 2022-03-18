@@ -1,38 +1,68 @@
 // Npm imports
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
 // Style imports
-import { AboutContainer, ContentInfoContainer } from 'styles';
+import { ContentInfoContainer, AboutContainer } from 'styles';
 // Interface imports
 import { RootState } from 'App';
 // Animation imports
 import { contentInfoVariant } from 'animation';
+// Redux imports
+import { addFile, removeFile } from 'redux/fileOrderSlice'
 
-const About = () => {
+interface Props {
+    appRef: any
+};
+
+const About = (props: Props) => {
+
+    const dispatch = useDispatch();
 
     const theme = useSelector((state: RootState) => state.theme.currentTheme);
+    const fileOrder = useSelector((state: RootState) => state.fileOrder);
 
-    let fileOrder = 1
+    let fileId = 1;
 
-    const [dblClicked, setDblClicked] = useState<boolean>(false)
+    const [dblClicked, setDblClicked] = useState<boolean>(false);
+    const [fileIndex, setFileIndex] = useState<number>(0);
+
+    const fileIndexCheck = (fileOrder: number[], fileId: number) => {
+        let index = fileOrder.indexOf(fileId);
+        return index
+    }
+
+    useEffect(() => {
+        setFileIndex(fileIndexCheck(fileOrder, fileId))
+    }, [fileOrder])
 
     return(
         <>
-            <AboutContainer onClick={(e) => e.detail === 2 && setDblClicked(true)} >
+            <AboutContainer onClick={(e) => {
+                e.detail === 2 && setDblClicked(true)
+                if(fileIndex === -1){
+                    e.detail === 2 && dispatch(addFile(fileId))
+                }
+            }}>
                 <h2>About</h2>
             </AboutContainer>
             <AnimatePresence>
                 {dblClicked && <ContentInfoContainer 
                     drag
-                    dragConstraints={{ left: -100, right: 800 , bottom: 375, top: -50}}
+                    dragConstraints={props.appRef}
+                    dragElastic={0}
+                    dragMomentum={false}
                     variants={contentInfoVariant}
                     animate='visible'
                     exit='exit'
-                    custom={fileOrder}
+                    custom={fileId}
                     theme={theme} 
                     top="6em" 
-                    order={fileOrder}
+                    order={fileIndex}
+                    onClick={() => {
+                        dispatch(removeFile(fileIndexCheck(fileOrder, fileId)))
+                        dispatch(addFile(fileId))
+                    }}
                 >
                     <h3>About Luis Perez:</h3>
                     <p>
@@ -46,11 +76,17 @@ const About = () => {
                     <p>-Game Developer</p>
                     <p>-Dad joke/ dry humor enthusiast</p>
                     
-                    <div onClick={() => setDblClicked(!dblClicked)} >X</div>
+                    <div onClick={() => {
+                        setDblClicked(!dblClicked)
+                        if(fileIndex !== -1){
+                            dispatch(removeFile(fileIndex))
+                        }
+                        setFileIndex(-1)
+                    }} >X</div>
                 </ContentInfoContainer>}
             </AnimatePresence>
         </>
     )
-}
+};
 
 export default About;

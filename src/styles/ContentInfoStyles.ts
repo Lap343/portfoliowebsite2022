@@ -19,7 +19,7 @@ export const ContentInfoContainer = styled(motion.div)<Props>`
     position: absolute;
     top: ${({ top }) => top};
     left: ${({ order }) => (order * 4) + 10}em; // Have the file move by two em to the right depending on the number of file clicked
-    z-index: ${({ order }) => order}; // Have the z-index increase by one depending on the numbers of files open
+    z-index: ${({ order }) => order + 10}; // Have the z-index increase by one depending on the numbers of files open
     overflow: hidden;
 
     & div{
