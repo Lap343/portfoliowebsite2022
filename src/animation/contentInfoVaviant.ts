@@ -4,15 +4,12 @@ const contentInfoVariant = {
         height: ['0.1em', '0.1em', '18em'],
         padding: ['0em 0em','0em 0em', '2em 1em'],
         left: ['10em', `${10 + (custom * 5)}em`, `${15 + (custom * 5)}em`],
-        transition: { duration: 1 }
+        transition: { duration: 1.5 }
     }),
-    exit: (custom: number) => ({
-        width: ['30em', '10em', '0em'],
-        height: ['18em', '0.1em', '0.1em'],
-        padding: ['2em 1em','0em 0em', '0em 0em'],
-        left: [`${15 + (custom * 5)}em`, `${10 + (custom * 5)}em`, '10em'],
-        transition: { duration: 1 }
-    })
+    exit: {
+        scale: [1, 1.1, 0],
+        transition: { duration: 0.5 }
+    }
 };
 
 export default contentInfoVariant;
