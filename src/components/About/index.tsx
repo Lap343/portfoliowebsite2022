@@ -3,13 +3,15 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
 // Style imports
-import { ContentInfoContainer, AboutContainer } from 'styles';
+import { ContentInfoContainer, AboutContainer, ContentInfoHeader } from 'styles';
 // Interface imports
 import { RootState } from 'App';
 // Animation imports
 import { contentInfoVariant } from 'animation';
 // Redux imports
-import { addFile, removeFile } from 'redux/fileOrderSlice'
+import { addFile, removeFile } from 'redux/fileOrderSlice';
+// Utilities imports
+import { fileIndexCheck } from 'utilities';
 
 interface Props {
     appRef: any
@@ -17,20 +19,17 @@ interface Props {
 
 const About = (props: Props) => {
 
-    const dispatch = useDispatch();
+    let fileId = 1;
 
+    // Redux state
     const theme = useSelector((state: RootState) => state.theme.currentTheme);
     const fileOrder = useSelector((state: RootState) => state.fileOrder);
 
-    let fileId = 1;
+    const dispatch = useDispatch();
 
+    // React state
     const [dblClicked, setDblClicked] = useState<boolean>(false);
     const [fileIndex, setFileIndex] = useState<number>(0);
-
-    const fileIndexCheck = (fileOrder: number[], fileId: number) => {
-        let index = fileOrder.indexOf(fileId);
-        return index
-    }
 
     useEffect(() => {
         setFileIndex(fileIndexCheck(fileOrder, fileId))
@@ -64,7 +63,16 @@ const About = (props: Props) => {
                         dispatch(addFile(fileId))
                     }}
                 >
-                    <h3>About Luis Perez:</h3>
+                    <ContentInfoHeader theme={theme}>
+                        <h3>About Luis Perez:</h3>
+                        <div onClick={() => {
+                            setDblClicked(!dblClicked)
+                            if(fileIndex !== -1){
+                                dispatch(removeFile(fileIndex))
+                            }
+                            setFileIndex(-1)
+                        }} >X</div>
+                    </ContentInfoHeader>
                     <p>
                         Welcome to my website. My name is Luis Perez. I'm a software developer living in Fresno, CA. I learned my 
                         basic understanding of coding at Geekwise Acadamy in Fresno. There I learned basic HTML5, CSS, and 
@@ -76,13 +84,6 @@ const About = (props: Props) => {
                     <p>-Game Developer</p>
                     <p>-Dad joke/ dry humor enthusiast</p>
                     
-                    <div onClick={() => {
-                        setDblClicked(!dblClicked)
-                        if(fileIndex !== -1){
-                            dispatch(removeFile(fileIndex))
-                        }
-                        setFileIndex(-1)
-                    }} >X</div>
                 </ContentInfoContainer>}
             </AnimatePresence>
         </>
