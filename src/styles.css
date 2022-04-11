@@ -1,11 +1,12 @@
 /* Scroll bar stylings */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 0.4em;
+    background: none;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: var(--lightestgrey); 
+    background: none;
 }
 
 /* Handle */

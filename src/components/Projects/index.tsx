@@ -3,7 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
 // Style imports
-import { ContentInfoContainer, ProjectsContainer, ContentInfoHeader } from 'styles';
+import { 
+    ContentInfoContainer, 
+    ProjectsContainer, 
+    ContentInfoHeader, 
+    ContentInfo 
+} from 'styles';
 // Interface imports
 import { RootState } from 'App';
 // Animation imports
@@ -71,18 +76,23 @@ const Projects = (props: Props) => {
                 >
                     <ContentInfoHeader theme={theme} >
                         <h3>My Projects:</h3>
-                        <div className='x' onClick={() => {
-                            setDblClicked(!dblClicked)
-                            if(fileIndex !== -1){
-                                dispatch(removeFile(fileIndexCheck(fileOrder, fileId)))
-                            }
-                            setFileIndex(-1)
-                        }} >X</div>
+                        <div 
+                            className='x' 
+                            onClick={() => {
+                                setDblClicked(!dblClicked)
+                                if(fileIndex !== -1){
+                                    dispatch(removeFile(fileIndexCheck(fileOrder, fileId)))
+                                }
+                                setFileIndex(-1)
+                            }}
+                        >X</div>
                     </ContentInfoHeader>
 
-                    <ReactToadsPartyPack /><hr/>
-                    <PokeApp /><hr/>
-                    <ZeldaProject />
+                    <ContentInfo>
+                        <ReactToadsPartyPack /><hr/>
+                        <PokeApp /><hr/>
+                        <ZeldaProject />
+                    </ContentInfo>
                 </ContentInfoContainer>}
             </AnimatePresence>
         </>

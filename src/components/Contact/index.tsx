@@ -3,7 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
 // Style imports
-import { ContentInfoContainer, ContactContainer, ContentInfoHeader } from 'styles';
+import { 
+    ContentInfoContainer, 
+    ContactContainer, 
+    ContentInfoHeader,
+    ContentInfo 
+} from 'styles';
 // Interface imports
 import { RootState } from 'App';
 // Animation imports
@@ -65,22 +70,27 @@ const Contact = (props: Props) => {
                 >
                     <ContentInfoHeader theme={theme} >
                         <h3>Contact me:</h3>
-                        <div onClick={() => {
-                            setDblClicked(!dblClicked)
-                            if(fileIndex !== -1){
-                                dispatch(removeFile(fileIndexCheck(fileOrder, fileId)))
-                            }
-                            setFileIndex(-1)
-                        }} >X</div>
+                        <div 
+                            className='x' 
+                            onClick={() => {
+                                setDblClicked(!dblClicked)
+                                if(fileIndex !== -1){
+                                    dispatch(removeFile(fileIndexCheck(fileOrder, fileId)))
+                                }
+                                setFileIndex(-1)
+                            }}
+                        >X</div>
                     </ContentInfoHeader>
-                    
-                    <p>
-                        - Email: luisperez@mypcand.me<br/>
-                        - LinkedIn: www.linkedin.com/in/lap343<br/>
-                        - Github: https://github.com/Lap343<br/>
-                        - Twitter: @lap343<br/>
-                        - Raven coordinates/ sky-write over: 36.7378° N, 119.7871° W
-                    </p>
+
+                    <ContentInfo>
+                        <p>
+                            - Email: luisperez@mypcand.me<br/>
+                            - LinkedIn: www.linkedin.com/in/lap343<br/>
+                            - Github: https://github.com/Lap343<br/>
+                            - Twitter: @lap343<br/>
+                            - Raven coordinates/ sky-write over: 36.7378° N, 119.7871° W
+                        </p>
+                    </ContentInfo>
                 </ContentInfoContainer>}
             </AnimatePresence>
         </>

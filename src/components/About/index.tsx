@@ -3,7 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
 // Style imports
-import { ContentInfoContainer, AboutContainer, ContentInfoHeader } from 'styles';
+import { 
+    ContentInfoContainer, 
+    AboutContainer, 
+    ContentInfoHeader, 
+    ContentInfo 
+} from 'styles';
 // Interface imports
 import { RootState } from 'App';
 // Animation imports
@@ -65,25 +70,29 @@ const About = (props: Props) => {
                 >
                     <ContentInfoHeader theme={theme}>
                         <h3>About Luis Perez:</h3>
-                        <div onClick={() => {
-                            setDblClicked(!dblClicked)
-                            if(fileIndex !== -1){
-                                dispatch(removeFile(fileIndex))
-                            }
-                            setFileIndex(-1)
-                        }} >X</div>
+                        <div 
+                            className='x' 
+                            onClick={() => {
+                                setDblClicked(!dblClicked)
+                                if(fileIndex !== -1){
+                                    dispatch(removeFile(fileIndex))
+                                }
+                                setFileIndex(-1)
+                            }}
+                        >X</div>
                     </ContentInfoHeader>
-                    <p>
-                        Welcome to my website. My name is Luis Perez. I'm a software developer living in Fresno, CA. I learned my 
-                        basic understanding of coding at Geekwise Acadamy in Fresno. There I learned basic HTML5, CSS, and 
-                        JavaSript. After Geekwise, I went on to expand my knowledge through online courses and making WordPress 
-                        websites for business at an accounting firm. Now I am in a wonderful opprotunity as a React apprentice at 
-                        Alphaworks in Fresno, CA.
-                    </p>
-                    <p>-Website programmer and designer</p>
-                    <p>-Game Developer</p>
-                    <p>-Dad joke/ dry humor enthusiast</p>
-                    
+                    <ContentInfo>
+                        <p>
+                            Welcome to my website. My name is Luis Perez. I'm a software developer living in Fresno, CA. I learned my 
+                            basic understanding of coding at Geekwise Acadamy in Fresno. There I learned basic HTML5, CSS, and 
+                            JavaSript. After Geekwise, I went on to expand my knowledge through online courses and making WordPress 
+                            websites for business at an accounting firm. Now I am in a wonderful opprotunity as a React apprentice at 
+                            Alphaworks in Fresno, CA.
+                        </p>
+                        <p>-Website programmer and designer</p>
+                        <p>-Game Developer</p>
+                        <p>-Dad joke/ dry humor enthusiast</p>
+                    </ContentInfo>
                 </ContentInfoContainer>}
             </AnimatePresence>
         </>

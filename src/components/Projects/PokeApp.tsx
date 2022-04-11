@@ -7,8 +7,8 @@ import pokedexApp from 'assets/pokedexApp.png'
 const PokeApp = () => {
     return (
         <PokeContainer>
-            <PokeImg src={pokedexApp} alt='A pokedex showing pikachu vs. charmander' />
             <h2>Pokedex App</h2>
+            <PokeImg src={pokedexApp} alt='A pokedex showing pikachu vs. charmander' />
             <ButtonLink href='https://pokedex-app-3fb51.web.app/' target="_blank" rel="noreferrer">Click here to play the game!</ButtonLink>
             <ButtonLink href='https://github.com/Lap343/poke-app' target="_blank" rel="noreferrer">Click here to visit the Github and look at the code!</ButtonLink>
             <p>This is a pokedex app that you can search for any pokemon and thier stats will show up. If you search another pokemon the app pust both up againt each other in a vs mode screen to see which pokemon is stronger. This was coded by Elias Gutierrez, Jorge Villalobos and myself.
@@ -26,6 +26,7 @@ const PokeContainer = styled.div`
 const PokeImg = styled.img`
     width: 75%;
     border: solid black 0.2em;
+    margin-bottom: 1em;
 `
 
 const ButtonLink = styled.a`
