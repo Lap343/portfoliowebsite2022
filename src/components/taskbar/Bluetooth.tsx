@@ -1,15 +1,12 @@
 // Npm imports
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 // Asset imports
 import bluetooth from 'assets/bluetooth.png';
 import abluetooth from 'assets/abluetooth.png';
 // Animation imports
-import { smallFadeIn, fadeIn } from 'styles/animations';
-
-interface Props {
-    hovered: boolean
-}
+import { fadeIn } from 'animation';
 
 const Bluetooth = () => {
 
@@ -20,22 +17,25 @@ const Bluetooth = () => {
             <BluetoothImg 
                 onMouseEnter={() => setHovered(true)}
                 onMouseLeave={() => setHovered(false)}
-                hovered={hovered}
             >
                 <img src={bluetooth} alt="a bluetooth icon" />
             </BluetoothImg>
-            <BluetoothPopUp 
+
+            {hovered && <BluetoothPopUp 
                 onMouseEnter={() => setHovered(true)} 
                 onMouseLeave={() => setHovered(false)}
-                hovered={hovered}
+                // Animation
+                variants={fadeIn}
+                initial="initial"
+                animate="animate"
             >
                 <img src={abluetooth} alt="a blue tooth" />
-            </BluetoothPopUp>
+            </BluetoothPopUp>}
         </>
     )
 };
 
-const BluetoothImg = styled.div<Props>`
+const BluetoothImg = styled(motion.div)`
     height: 2em;
     width: 1.9em;
     display: flex;
@@ -45,26 +45,29 @@ const BluetoothImg = styled.div<Props>`
     padding: 0.2em 0.2em 0.2em 0.5em;
 
     &:hover{
-        animation: ${smallFadeIn} 0.25s linear forwards;
         background: rgba(136,136,136, 0);
         background: radial-gradient(circle, rgba(136,136,136,0.3) 0%, rgba(221,221,221,0.3) 70%);
     }
 `
-const BluetoothPopUp = styled.div<Props>`
-    display: ${props => !props.hovered ? 'none' : 'flex' };
+const BluetoothPopUp = styled(motion.div)`
     height: 4em;
     width: 2.5em;
-    align-items: center;
-    justify-content: baseline;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: baseline;
     background-color: white;
     border: solid 1px black;
     position: relative;
     bottom: 4.2em;
     left: 0.3em;
     margin-left: -3.375em;
-    animation: ${fadeIn} 0.75s linear forwards;
     border-radius: 25%;
-    padding: 0 0 0 0.75em;
+    padding-left: 0.75em;
+
+    & img{
+        height: 2.5em;
+    }
 `
 
 export default Bluetooth;

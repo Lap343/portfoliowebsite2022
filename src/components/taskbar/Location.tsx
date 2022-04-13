@@ -1,16 +1,13 @@
 // Npm imports
 import React, { useState } from "react";
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 // Asset imports
 import location from "assets/location.png";
 // Component import
 import Earth from './Earth';
 // Animation imports
-import { smallFadeIn, fadeIn } from 'styles/animations';
-
-interface Props {
-    hovered: boolean
-}
+import { fadeIn } from 'animation'
 
 const Location = () => {
 
@@ -19,23 +16,29 @@ const Location = () => {
     return(
         <>
             <LocationImg 
-                onMouseEnter={() => setHovered(true)}
+                // State
+                onMouseEnter={() => setHovered(true)} 
                 onMouseLeave={() => setHovered(false)}
             >
                 <img src={location} alt="a location icon" />
             </LocationImg>
-            <LocationPopUp 
-                hovered={hovered} 
+
+            {hovered && <LocationPopUp 
+                // State
                 onMouseEnter={() => setHovered(true)} 
                 onMouseLeave={() => setHovered(false)}
+                // Animation
+                variants={fadeIn}
+                initial="initial"
+                animate="animate"
             >
                 <Earth />
-            </LocationPopUp>
+            </LocationPopUp>}
         </>
     )
 };
 
-const LocationImg = styled.div`
+const LocationImg = styled(motion.div)`
     height: 2em;
     width: 2em;
     display: flex;
@@ -45,22 +48,20 @@ const LocationImg = styled.div`
     padding: 0.2em 0 0.2em 0.5em;
     
     &:hover {
-        animation: ${smallFadeIn} 0.25s linear forwards;
         background: rgba(136,136,136, 0);
         background: radial-gradient(circle, rgba(136,136,136,0.3) 0%, rgba(221,221,221,0.3) 70%);
     }
 `
-const LocationPopUp = styled.div<Props>`
-    display: ${props => !props.hovered && 'none' };
+const LocationPopUp = styled(motion.div)`
+    z-index: -1;
     height: 20em;
     width: 20em;
     background-color: white;
     position: relative;
-    bottom: 11.5em;
-    left: 8em;
+    bottom: 9em;
+    left: 8.25em;
     margin-left: -20em;
     border-radius: 25%;
-    animation: ${fadeIn} 0.75s linear forwards;
     background-color: rgba(0,0,0,0);
 `
 export default Location;

@@ -5,8 +5,6 @@ import { useDispatch } from 'react-redux';
 import { motion } from "framer-motion";
 // Redux imports
 import { changeTheme } from 'redux/themeSlice';
-// Styles import
-import { smallFadeIn } from 'styles/animations';
 // Asset imports
 import moon from 'assets/moon.png';
 import sun from 'assets/sun.png';
@@ -35,7 +33,7 @@ const ThemeBtn = () => {
     )
 };
 
-const ThemeBtnStyle = styled.div<Props>`
+const ThemeBtnStyle = styled(motion.div)<Props>`
     color: white;
     height: 2em;
     width: 4em;
@@ -46,7 +44,6 @@ const ThemeBtnStyle = styled.div<Props>`
     padding: 0.2em 0.2em 0.2em 0.2em;
     
     &:hover {
-        animation: ${smallFadeIn} 0.25s linear forwards;
         background: rgba(136,136,136, 0);
         background: radial-gradient(circle, rgba(136,136,136,0.3) 0%, rgba(221,221,221,0.3) 70%);
     }
