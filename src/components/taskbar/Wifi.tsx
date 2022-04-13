@@ -1,10 +1,9 @@
 // Npm imports
 import React from "react";
 import styled from 'styled-components';
+import { motion } from "framer-motion";
 // Asset imports
 import wifi from "assets/wifi.png";
-// Animation imports
-import { smallFadeIn } from 'styles/animations';
 
 const Wifi = () => {
     return(
@@ -14,7 +13,7 @@ const Wifi = () => {
     )
 };
 
-const WifiImg = styled.div`
+const WifiImg = styled(motion.div)`
     height: 2em;
     width: 2em;
     display: flex;
@@ -24,7 +23,6 @@ const WifiImg = styled.div`
     padding: 0.2em 0 0.2em 0.5em;
     
     &:hover {
-        animation: ${smallFadeIn} 0.25s linear forwards;
         background: rgba(136,136,136, 0);
         background: radial-gradient(circle, rgba(136,136,136,0.3) 0%, rgba(221,221,221,0.3) 70%);
     }
