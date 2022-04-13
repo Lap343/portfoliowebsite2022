@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
+import emailjs from 'emailjs-com';
 // Style imports
 import { 
     ContentInfoContainer, 
@@ -39,6 +40,19 @@ const Contact = (props: Props) => {
     useEffect(() => {
         setFileIndex(fileIndexCheck(fileOrder, fileId))
     }, [fileOrder])
+
+    let sendEmail = (e:any) => {
+        e.preventDefault();
+
+        emailjs.sendForm('service_lhwlz4b', 'template_09tjdk3', e.target, process.env.REACT_APP_EMAILJS_API_KEY)
+        .then((result) => {
+            console.log(result.text);
+        }, (error) => {
+            console.log(error.text);
+        });
+
+        e.target.reset();
+    }
 
     return(
         <>
@@ -90,6 +104,15 @@ const Contact = (props: Props) => {
                             - Twitter: @lap343<br/>
                             - Raven coordinates/ sky-write over: 36.7378° N, 119.7871° W
                         </p>
+
+                        <form onSubmit={sendEmail}>
+                            <h3>Send me a message</h3>
+                            <input type="text" placeholder="Name" name="name"></input><br/>
+                            <input type="email" placeholder="Email Address" name="email"></input><br/>
+                            <input type="text" placeholder="Subject" name="subject"></input><br/>
+                            <textarea id="" cols={30} rows={8} placeholder="Your Message" name="message"></textarea><br/>
+                            <input type="submit" value="Send Message"></input>
+                        </form>
                     </ContentInfo>
                 </ContentInfoContainer>}
             </AnimatePresence>
