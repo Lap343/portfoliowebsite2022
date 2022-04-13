@@ -20,20 +20,20 @@ const ThemeBtn = () => {
     const [clicked, setClicked] = useState<boolean>(false);
 
     return(
-        <ThemeBtnStyle clicked={clicked} onClick={() => {
+        <ThemeBtnStyle onClick={() => {
                 setClicked(!clicked)
                 dispatch(changeTheme())
             }}>
-            <div>
+            <ThemeBtnContainer clicked={clicked}>
                 <SunImg src={sun} alt="the sun" clicked={clicked} />
                 <MoonImg src={moon} alt="the moon" clicked={clicked} />
                 <motion.div layout></motion.div>
-            </div>
+            </ThemeBtnContainer>
         </ThemeBtnStyle>
     )
 };
 
-const ThemeBtnStyle = styled(motion.div)<Props>`
+const ThemeBtnStyle = styled.div`
     color: white;
     height: 2em;
     width: 4em;
@@ -47,24 +47,23 @@ const ThemeBtnStyle = styled(motion.div)<Props>`
         background: rgba(136,136,136, 0);
         background: radial-gradient(circle, rgba(136,136,136,0.3) 0%, rgba(221,221,221,0.3) 70%);
     }
-
+`
+const ThemeBtnContainer = styled.div<Props>`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: ${({ clicked }) => clicked ? 'flex-end' : 'flex-start'};
+    height: 1.75em;
+    width: 4em;
+    background-color: #545870be;
+    border-radius: 15px;
+    
     & div{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: ${({ clicked }) => clicked ? 'flex-end' : 'flex-start'};
-        height: 1.75em;
-        width: 4em;
-        background-color: #545870be;
+        width: 1.5em;
+        height: 1.5em;
+        background-color: white;
         border-radius: 15px;
-        
-        & div{
-            width: 1.5em;
-            height: 1.5em;
-            background-color: white;
-            border-radius: 15px;
-            margin-left: 0.25em;
-        }
+        margin-left: 0.25em;
     }
 `
 const SunImg = styled.img<Props>`
