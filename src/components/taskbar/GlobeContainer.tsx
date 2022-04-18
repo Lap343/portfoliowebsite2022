@@ -3,7 +3,7 @@ import React, { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import Globe from './Globe'
 
-const Earth = () => {
+const GlobeContainer = () => {
     return(
         <Canvas>
             <Suspense fallback={null}>
@@ -15,4 +15,4 @@ const Earth = () => {
     )
 };
 
-export default Earth;
+export default GlobeContainer;
