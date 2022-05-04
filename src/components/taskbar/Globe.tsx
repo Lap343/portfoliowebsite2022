@@ -5,7 +5,7 @@ import { TextureLoader } from 'three/src/loaders/TextureLoader';
 
 const Globe = () => {
 
-    const earthMesh = useRef<THREE.Mesh>();
+    const earthMesh = useRef<THREE.Mesh>(null!);
 
     const colorMap = useLoader(TextureLoader, 'earth.jpg');
  
