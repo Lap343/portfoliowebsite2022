@@ -7,7 +7,8 @@ import {
   About,
   Projects,
   Contact,
-  Taskbar
+  Taskbar,
+  AlienGame
 } from 'components';
 // Styles import
 import GlobalStyles from 'styles/GlobalStyles';
@@ -33,6 +34,7 @@ function App() {
           <About appRef={appRef} />
           <Projects appRef={appRef} />
           <Contact appRef={appRef} />
+          <AlienGame appRef={appRef} />
         </div>
         <Taskbar />
       </AppStyles>

@@ -3,7 +3,7 @@ import React, { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 // Component imports
-import Globe from './Globe'
+import Globe from './Globe';
 
 const Earth = () => {
     return(
