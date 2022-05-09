@@ -1,7 +1,7 @@
 // Npm imports
 import React, { useState } from "react";
 import styled from 'styled-components';
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 // Asset imports
 import wifi from "assets/wifi.png";
 // Animation imports
@@ -26,27 +26,29 @@ const Wifi = () => {
                 <img className="wifi" src={wifi} alt="a wifi icon" />
             </WifiImg>
 
-            {hovered && <WifiPopUp 
-                // State
-                onMouseEnter={() => setHovered(true)} 
-                onMouseLeave={() => setHovered(false)}
-                // Animation
-                variants={fadeIn}
-                initial="initial"
-                animate="animate"
-            >
-                <div>Wifi switch</div>
-                <WifiToggle 
-                    clicked={clicked}
-                    onClick={() => {
-                        setClicked(!clicked)
-                    }}
+            <AnimatePresence>
+                {hovered && <WifiPopUp 
+                    // State
+                    onMouseEnter={() => setHovered(true)} 
+                    onMouseLeave={() => setHovered(false)}
+                    // Animation
+                    variants={fadeIn}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
                 >
-                    <motion.div layout />
-                </WifiToggle>
-                <div>Wifi {!clicked ? "On" : "Off"}</div>
-            </WifiPopUp>}
-            
+                    <div>Wifi switch</div>
+                    <WifiToggle 
+                        clicked={clicked}
+                        onClick={() => {
+                            setClicked(!clicked)
+                        }}
+                    >
+                        <motion.div layout />
+                    </WifiToggle>
+                    <div>Wifi {!clicked ? "On" : "Off"}</div>
+                </WifiPopUp>}
+            </AnimatePresence>
 
             {clicked && <ForOForPage>
                 <div className='conatainer'>
