@@ -1,13 +1,13 @@
 // Npm imports
 import React, { useState } from "react";
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 // Asset imports
 import location from "assets/location.png";
 // Component import
 import GlobeContainer from './GlobeContainer';
 // Animation imports
-import { fadeIn } from 'animation'
+import { fadeIn } from 'animation';
 
 const Location = () => {
 
@@ -23,17 +23,20 @@ const Location = () => {
                 <img src={location} alt="a location icon" />
             </LocationImg>
 
-            {hovered && <LocationPopUp 
-                // State
-                onMouseEnter={() => setHovered(true)} 
-                onMouseLeave={() => setHovered(false)}
-                // Animation
-                variants={fadeIn}
-                initial="initial"
-                animate="animate"
-            >
-                <GlobeContainer />
-            </LocationPopUp>}
+            <AnimatePresence>
+                {hovered && <LocationPopUp 
+                    // State
+                    onMouseEnter={() => setHovered(true)} 
+                    onMouseLeave={() => setHovered(false)}
+                    // Animation
+                    variants={fadeIn}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                >
+                    <GlobeContainer />
+                </LocationPopUp>}
+            </AnimatePresence>
         </>
     )
 };
@@ -56,7 +59,6 @@ const LocationPopUp = styled(motion.div)`
     z-index: -1;
     height: 20em;
     width: 20em;
-    background-color: white;
     position: relative;
     bottom: 9em;
     left: 8.25em;

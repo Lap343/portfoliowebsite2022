@@ -25,9 +25,9 @@ const ThemeBtn = () => {
                 dispatch(changeTheme())
             }}>
             <ThemeBtnContainer clicked={clicked}>
-                <SunImg src={sun} alt="the sun" clicked={clicked} />
                 <MoonImg src={moon} alt="the moon" clicked={clicked} />
-                <motion.div layout></motion.div>
+                <SunImg src={sun} alt="the sun" clicked={clicked} />
+                <motion.div layout />
             </ThemeBtnContainer>
         </ThemeBtnStyle>
     )
@@ -66,12 +66,12 @@ const ThemeBtnContainer = styled.div<Props>`
         margin-left: 0.25em;
     }
 `
-const SunImg = styled.img<Props>`
+const MoonImg = styled.img<Props>`
     opacity: ${({ clicked }) => clicked ? 1 : 0};
     position: relative;
     right: 2em;
 `
-const MoonImg = styled.img<Props>`
+const SunImg = styled.img<Props>`
     opacity: ${({ clicked }) => clicked ? 0 : 1};
     position: relative;
     left: 4.6em;
