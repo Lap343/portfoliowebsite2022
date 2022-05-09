@@ -7,7 +7,7 @@ import location from "assets/location.png";
 // Component import
 import Earth from './Earth';
 // Animation imports
-import { fadeIn } from 'animation'
+import { fadeIn } from 'animation';
 
 const Location = () => {
 
@@ -56,7 +56,6 @@ const LocationPopUp = styled(motion.div)`
     z-index: -1;
     height: 20em;
     width: 20em;
-    background-color: white;
     position: relative;
     bottom: 9em;
     left: 8.25em;
