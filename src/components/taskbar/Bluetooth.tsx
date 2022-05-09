@@ -1,7 +1,7 @@
 // Npm imports
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 // Asset imports
 import bluetooth from 'assets/bluetooth.png';
 import abluetooth from 'assets/abluetooth.png';
@@ -21,16 +21,19 @@ const Bluetooth = () => {
                 <img src={bluetooth} alt="a bluetooth icon" />
             </BluetoothImg>
 
-            {hovered && <BluetoothPopUp 
-                onMouseEnter={() => setHovered(true)} 
-                onMouseLeave={() => setHovered(false)}
-                // Animation
-                variants={fadeIn}
-                initial="initial"
-                animate="animate"
-            >
-                <img src={abluetooth} alt="a blue tooth" />
-            </BluetoothPopUp>}
+            <AnimatePresence>
+                {hovered && <BluetoothPopUp 
+                    onMouseEnter={() => setHovered(true)} 
+                    onMouseLeave={() => setHovered(false)}
+                    // Animation
+                    variants={fadeIn}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                >
+                    <img src={abluetooth} alt="a blue tooth" />
+                </BluetoothPopUp>}
+            </AnimatePresence>
         </>
     )
 };

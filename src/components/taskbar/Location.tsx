@@ -1,7 +1,7 @@
 // Npm imports
 import React, { useState } from "react";
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 // Asset imports
 import location from "assets/location.png";
 // Component import
@@ -23,17 +23,20 @@ const Location = () => {
                 <img src={location} alt="a location icon" />
             </LocationImg>
 
-            {hovered && <LocationPopUp 
-                // State
-                onMouseEnter={() => setHovered(true)} 
-                onMouseLeave={() => setHovered(false)}
-                // Animation
-                variants={fadeIn}
-                initial="initial"
-                animate="animate"
-            >
-                <Earth />
-            </LocationPopUp>}
+            <AnimatePresence>
+                {hovered && <LocationPopUp 
+                    // State
+                    onMouseEnter={() => setHovered(true)} 
+                    onMouseLeave={() => setHovered(false)}
+                    // Animation
+                    variants={fadeIn}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                >
+                    <Earth />
+                </LocationPopUp>}
+            </AnimatePresence>
         </>
     )
 };
