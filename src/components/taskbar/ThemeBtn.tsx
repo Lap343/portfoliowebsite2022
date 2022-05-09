@@ -27,7 +27,7 @@ const ThemeBtn = () => {
             <ThemeBtnContainer clicked={clicked}>
                 <SunImg src={sun} alt="the sun" clicked={clicked} />
                 <MoonImg src={moon} alt="the moon" clicked={clicked} />
-                <motion.div layout></motion.div>
+                <motion.div layout />
             </ThemeBtnContainer>
         </ThemeBtnStyle>
     )
