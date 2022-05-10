@@ -7,7 +7,9 @@ import {
     ContentInfoContainer, 
     ProjectsContainer, 
     ContentInfoHeader, 
-    ContentInfo 
+    ContentInfo ,
+    FolderBack,
+    FolderFront
 } from 'styles';
 // Interface imports
 import { RootState } from 'App';
@@ -21,6 +23,9 @@ import { fileIndexCheck } from 'utilities';
 import ZeldaProject from './ZeldaProject';
 import PokeApp from './PokeApp';
 import ReactToadsPartyPack from './ReactToadsPartyPack';
+// Image imports
+import folderBackImg from 'assets/folderBack.png';
+import folderFrontImg from 'assets/folderFront.png';
 
 interface Props {
     appRef: any
@@ -46,12 +51,17 @@ const Projects = (props: Props) => {
 
     return(
         <>
-            <ProjectsContainer onClick={(e) => {
-                e.detail === 2 && setDblClicked(true)
-                if(fileIndex === -1){
-                    e.detail === 2 && dispatch(addFile(fileId))
+            {/* Projects Folder */}
+            <ProjectsContainer 
+                onClick={(e) => {
+                    e.detail === 2 && setDblClicked(true)
+                    if(fileIndex === -1){
+                        e.detail === 2 && dispatch(addFile(fileId))
+                    }
                 }
-            }}>
+            }>
+                <FolderBack src={folderBackImg} alt="back of folder" />
+                <FolderFront src={folderFrontImg} alt="front of folder" />
                 <h2>Projects</h2>
             </ProjectsContainer>
 

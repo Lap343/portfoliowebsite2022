@@ -5,7 +5,7 @@ import { OrbitControls } from '@react-three/drei';
 // Component imports
 import Globe from './Globe';
 
-const Earth = () => {
+const GlobeContainer = () => {
     return(
         <Canvas>
             <Suspense fallback={null}>
@@ -18,4 +18,4 @@ const Earth = () => {
     )
 };
 
-export default Earth;
+export default GlobeContainer;

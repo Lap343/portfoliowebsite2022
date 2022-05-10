@@ -8,6 +8,7 @@ import {
     RightContainer,
     TimeContainer
 } from './TaskbarStyles';
+import { FolderBack, FolderFront } from './folderStyles';
 
 export {
     AboutContainer,
@@ -19,6 +20,8 @@ export {
     RightContainer,
     TimeContainer,
     ContentInfoHeader,
-    ContentInfo
+    ContentInfo,
+    FolderBack,
+    FolderFront
 }
 

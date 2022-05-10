@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 // Asset imports
 import location from "assets/location.png";
 // Component import
-import Earth from './Earth';
+import GlobeContainer from './GlobeContainer';
 // Animation imports
 import { fadeIn } from 'animation';
 
@@ -34,7 +34,7 @@ const Location = () => {
                     animate="animate"
                     exit="exit"
                 >
-                    <Earth />
+                    <GlobeContainer />
                 </LocationPopUp>}
             </AnimatePresence>
         </>

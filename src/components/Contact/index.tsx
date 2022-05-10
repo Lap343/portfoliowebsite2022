@@ -8,7 +8,9 @@ import {
     ContentInfoContainer, 
     ContactContainer, 
     ContentInfoHeader,
-    ContentInfo 
+    ContentInfo,
+    FolderBack,
+    FolderFront
 } from 'styles';
 // Interface imports
 import { RootState } from 'App';
@@ -18,6 +20,9 @@ import { contentInfoVariant } from 'animation';
 import { addFile, removeFile } from 'redux/fileOrderSlice';
 // Utilities imports
 import { fileIndexCheck } from 'utilities';
+// Image imports
+import folderBackImg from 'assets/folderBack.png';
+import folderFrontImg from 'assets/folderFront.png';
 
 interface Props {
     appRef: any
@@ -56,14 +61,21 @@ const Contact = (props: Props) => {
 
     return(
         <>
-            <ContactContainer onClick={(e) => {
-                e.detail === 2 && setDblClicked(true)
-                if(fileIndex === -1){
-                    e.detail === 2 && dispatch(addFile(fileId))
+            {/* Contact Folder */}
+            <ContactContainer 
+                onClick={(e) => {
+                    e.detail === 2 && setDblClicked(true)
+                    if(fileIndex === -1){
+                        e.detail === 2 && dispatch(addFile(fileId))
+                    }
                 }
-            }}>
+            }>
+                <FolderBack src={folderBackImg} alt="back of folder" />
+                <FolderFront src={folderFrontImg} alt="front of folder" />
                 <h2>Contact</h2>
             </ContactContainer>
+
+            {/* Contact File */}
             <AnimatePresence>
                 {dblClicked && <ContentInfoContainer 
                     drag 
