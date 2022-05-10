@@ -45,12 +45,14 @@ const AlienGame = (props: Props) => {
 
     return(
         <>
-            <AlienFileContainer onClick={(e) => {
-                e.detail === 2 && setDblClicked(true)
-                if(fileIndex === -1){
-                    e.detail === 2 && dispatch(addFile(fileId))
+            <AlienFileContainer 
+                onClick={(e) => {
+                    e.detail === 2 && setDblClicked(true)
+                    if(fileIndex === -1){
+                        e.detail === 2 && dispatch(addFile(fileId))
+                    }
                 }
-            }}>
+            }>
                 <AlienFileImg src={AlienGameFile} alt='Alien game file png' />
             </AlienFileContainer>
 
@@ -87,7 +89,9 @@ const AlienGame = (props: Props) => {
                                 }}
                             >X</div>
                         </ContentInfoHeader>
+
                         <AlienGameCanvas />
+
                     </ContentInfoContainer>
                 }
             </AnimatePresence>
@@ -96,8 +100,15 @@ const AlienGame = (props: Props) => {
 };
 
 const AlienFileContainer = styled.div`
-    width: 5em;
-    padding-top: 2em;
+    /* position: relative; */
+    width: 9.5em;
+    height: 10em;
+    padding: 0.5em 0.5em;
+
+    &:hover{
+        background-color: rgba(0,0,0,0.5);
+        border-radius: 1em;
+    }
 `
 const AlienFileImg = styled.img`
     width: 10em;
