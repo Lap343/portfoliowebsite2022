@@ -1,15 +1,17 @@
 // Npm imports
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { motion } from "framer-motion";
 // Redux imports
 import { changeTheme } from 'redux/themeSlice';
-// Styles import
-import { smallFadeIn } from 'styles/animations';
 // Asset imports
 import moon from 'assets/moon.png';
 import sun from 'assets/sun.png';
+// Sound imports
+import { switchClose, switchOpen } from 'assets/sounds';
+// Interface imports
+import { RootState } from 'App';
 
 interface Props {
     clicked: boolean;
@@ -17,25 +19,28 @@ interface Props {
 
 const ThemeBtn = () => {
 
+    const mutedState = useSelector((state: RootState) => state.mute.isMuted);
+
     const dispatch = useDispatch();
 
     const [clicked, setClicked] = useState<boolean>(false);
 
     return(
-        <ThemeBtnStyle clicked={clicked} onClick={() => {
+        <ThemeBtnStyle onClick={() => {
+                (!mutedState && (clicked ? switchOpen.play() : switchClose.play()))
                 setClicked(!clicked)
                 dispatch(changeTheme())
             }}>
-            <div>
-                <SunImg src={sun} alt="the sun" clicked={clicked} />
+            <ThemeBtnContainer clicked={clicked}>
                 <MoonImg src={moon} alt="the moon" clicked={clicked} />
-                <motion.div layout></motion.div>
-            </div>
+                <SunImg src={sun} alt="the sun" clicked={clicked} />
+                <motion.div layout />
+            </ThemeBtnContainer>
         </ThemeBtnStyle>
     )
 };
 
-const ThemeBtnStyle = styled.div<Props>`
+const ThemeBtnStyle = styled.div`
     color: white;
     height: 2em;
     width: 4em;
@@ -46,36 +51,34 @@ const ThemeBtnStyle = styled.div<Props>`
     padding: 0.2em 0.2em 0.2em 0.2em;
     
     &:hover {
-        animation: ${smallFadeIn} 0.25s linear forwards;
         background: rgba(136,136,136, 0);
         background: radial-gradient(circle, rgba(136,136,136,0.3) 0%, rgba(221,221,221,0.3) 70%);
     }
-
+`
+const ThemeBtnContainer = styled.div<Props>`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: ${({ clicked }) => clicked ? 'flex-end' : 'flex-start'};
+    height: 1.75em;
+    width: 4em;
+    background-color: #545870be;
+    border-radius: 15px;
+    
     & div{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: ${({ clicked }) => clicked ? 'flex-end' : 'flex-start'};
-        height: 1.75em;
-        width: 4em;
-        background-color: #545870be;
+        width: 1.5em;
+        height: 1.5em;
+        background-color: white;
         border-radius: 15px;
-        
-        & div{
-            width: 1.5em;
-            height: 1.5em;
-            background-color: white;
-            border-radius: 15px;
-            margin-left: 0.25em;
-        }
+        margin-left: 0.25em;
     }
 `
-const SunImg = styled.img<Props>`
+const MoonImg = styled.img<Props>`
     opacity: ${({ clicked }) => clicked ? 1 : 0};
     position: relative;
     right: 2em;
 `
-const MoonImg = styled.img<Props>`
+const SunImg = styled.img<Props>`
     opacity: ${({ clicked }) => clicked ? 0 : 1};
     position: relative;
     left: 4.6em;

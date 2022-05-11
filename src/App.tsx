@@ -7,7 +7,8 @@ import {
   About,
   Projects,
   Contact,
-  Taskbar
+  Taskbar,
+  AlienGame
 } from 'components';
 // Styles import
 import GlobalStyles from 'styles/GlobalStyles';
@@ -16,7 +17,10 @@ export interface RootState {
   theme: {
     currentTheme: string,
   },
-  fileOrder: number[]
+  fileOrder: number[],
+  mute: {
+    isMuted: boolean,
+  },
 }
 
 function App() {
@@ -33,6 +37,7 @@ function App() {
           <About appRef={appRef} />
           <Projects appRef={appRef} />
           <Contact appRef={appRef} />
+          <AlienGame appRef={appRef} />
         </div>
         <Taskbar />
       </AppStyles>

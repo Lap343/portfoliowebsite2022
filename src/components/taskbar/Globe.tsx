@@ -5,10 +5,10 @@ import { TextureLoader } from 'three/src/loaders/TextureLoader';
 
 const Globe = () => {
 
-    const earthMesh = useRef<THREE.Mesh>();
+    const earthMesh = useRef<THREE.Mesh>(null!);
 
     const colorMap = useLoader(TextureLoader, 'earth.jpg');
- 
+
     useFrame(({ clock }) => {
         const a = clock.getElapsedTime();
         earthMesh.current!.rotation.y = a;

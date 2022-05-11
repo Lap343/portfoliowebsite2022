@@ -1,6 +1,6 @@
 import { AboutContainer } from './AboutStyles';
 import { ContactContainer } from './ContactStyles';
-import { ContentInfoContainer } from './ContentInfoStyles';
+import { ContentInfoContainer, ContentInfoHeader, ContentInfo } from './ContentInfoStyles';
 import { ProjectsContainer } from './ProjectsStyles';
 import {
     TaskbarContainer,
@@ -8,6 +8,7 @@ import {
     RightContainer,
     TimeContainer
 } from './TaskbarStyles';
+import { FolderBack, FolderFront } from './folderStyles';
 
 export {
     AboutContainer,
@@ -17,6 +18,10 @@ export {
     TaskbarContainer,
     LeftContainer,
     RightContainer,
-    TimeContainer
+    TimeContainer,
+    ContentInfoHeader,
+    ContentInfo,
+    FolderBack,
+    FolderFront
 }
 
