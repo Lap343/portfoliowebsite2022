@@ -22,6 +22,8 @@ import { fileIndexCheck } from 'utilities';
 // Image imports
 import folderBackImg from 'assets/folderBack.png';
 import folderFrontImg from 'assets/folderFront.png';
+// Sound imports
+import { open, close } from 'assets/sounds';
 
 interface Props {
     appRef: any
@@ -34,6 +36,7 @@ const About = (props: Props) => {
     // Redux state
     const theme = useSelector((state: RootState) => state.theme.currentTheme);
     const fileOrder = useSelector((state: RootState) => state.fileOrder);
+    const mutedState = useSelector((state: RootState) => state.mute.isMuted);
 
     const dispatch = useDispatch();
 
@@ -50,6 +53,7 @@ const About = (props: Props) => {
             {/* About Folder */}
             <AboutContainer 
                 onClick={(e) => {
+                    (!mutedState && open.play());
                     e.detail === 2 && setDblClicked(true)
                     if(fileIndex === -1){
                         e.detail === 2 && dispatch(addFile(fileId))
@@ -85,6 +89,7 @@ const About = (props: Props) => {
                         <div 
                             className='x' 
                             onClick={() => {
+                                (!mutedState && close.play());
                                 setDblClicked(!dblClicked)
                                 if(fileIndex !== -1){
                                     dispatch(removeFile(fileIndex))
