@@ -1,13 +1,17 @@
 // Npm imports
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { motion } from "framer-motion";
 // Redux imports
 import { changeTheme } from 'redux/themeSlice';
 // Asset imports
 import moon from 'assets/moon.png';
 import sun from 'assets/sun.png';
+// Sound imports
+import { switchClose, switchOpen } from 'assets/sounds';
+// Interface imports
+import { RootState } from 'App';
 
 interface Props {
     clicked: boolean;
@@ -15,12 +19,15 @@ interface Props {
 
 const ThemeBtn = () => {
 
+    const mutedState = useSelector((state: RootState) => state.mute.isMuted);
+
     const dispatch = useDispatch();
 
     const [clicked, setClicked] = useState<boolean>(false);
 
     return(
         <ThemeBtnStyle onClick={() => {
+                (!mutedState && (clicked ? switchOpen.play() : switchClose.play()))
                 setClicked(!clicked)
                 dispatch(changeTheme())
             }}>

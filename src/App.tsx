@@ -17,7 +17,10 @@ export interface RootState {
   theme: {
     currentTheme: string,
   },
-  fileOrder: number[]
+  fileOrder: number[],
+  mute: {
+    isMuted: boolean,
+  },
 }
 
 function App() {

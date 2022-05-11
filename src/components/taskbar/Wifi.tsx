@@ -2,16 +2,23 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
 import { AnimatePresence, motion } from "framer-motion";
+import { useSelector } from 'react-redux';
 // Asset imports
 import wifi from "assets/wifi.png";
 // Animation imports
 import { fadeIn } from 'animation';
+// Sound imports
+import { switchClose, switchOpen } from 'assets/sounds';
+// Interface imports
+import { RootState } from 'App';
 
 interface Props {
     clicked: boolean;
 }
 
 const Wifi = () => {
+
+    const mutedState = useSelector((state: RootState) => state.mute.isMuted);
 
     const [hovered, setHovered] = useState<boolean>(false);
     const [clicked, setClicked] = useState<boolean>(false);
@@ -41,6 +48,7 @@ const Wifi = () => {
                     <WifiToggle 
                         clicked={clicked}
                         onClick={() => {
+                            (!mutedState && (clicked ? switchOpen.play() : switchClose.play()))
                             setClicked(!clicked)
                         }}
                     >
@@ -62,6 +70,7 @@ const Wifi = () => {
                     <WifiToggle 
                         clicked={clicked}
                         onClick={() => {
+                            (!mutedState && (clicked ? switchOpen.play() : switchClose.play()))
                             setClicked(!clicked)
                         }}
                     >

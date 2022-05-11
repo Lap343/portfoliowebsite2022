@@ -7,7 +7,7 @@ const contentInfoVariant = {
     }),
     exit: {
         scale: [1, 1.1, 0],
-        transition: { duration: 0.5 }
+        transition: { duration: 0.35 }
     }
 };
 
