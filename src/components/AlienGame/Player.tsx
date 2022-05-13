@@ -5,11 +5,15 @@ import { useFrame } from '@react-three/fiber';
 import Shot from './Shot';
 // Model imports
 import SpaceShuttel from 'assets/AlienGame/Models/SpaceShuttel';
+// Sound imports
+import { lazer1, lazer2, lazer3 } from 'assets/AlienGame/sounds';
+import { randomNum } from 'utilities';
 
 const Player = () => {
 
     const playerMesh = useRef<THREE.Mesh>(null!);
 
+    // React State
     const [left, setLeft] = useState(false);
     const [right, setRight] = useState(false);
 
@@ -21,6 +25,20 @@ const Player = () => {
     const [shot2, setShot2] = useState(false);
     const [shot3, setShot3] = useState(false);
 
+    const lazerCheck = () => {
+        switch(randomNum(3)){
+            case 1:
+                lazer1.play();
+                break;
+            case 2:
+                lazer2.play();
+                break;
+            case 3:
+                lazer3.play();
+                break;
+        }
+    }
+
     const handleKeyDown = useCallback((e: any) => {
         if(e.code === 'ArrowLeft'){
             setLeft(true)
@@ -31,17 +49,20 @@ const Player = () => {
         if(e.code === 'Space'){
             if(shot2){
                 if(!shot3){
+                    lazerCheck()
                     setXPos3(playerMesh.current!.position.x)
                 }
                 setShot3(true)
             }
             if(shot){
                 if(!shot2){
+                    lazerCheck()
                     setXPos2(playerMesh.current!.position.x)
                 }
                 setShot2(true)
             }
             if(!shot){
+                lazerCheck()
                 setXPos(playerMesh.current!.position.x)
             }
             setShot(true)
