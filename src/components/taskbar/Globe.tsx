@@ -3,7 +3,11 @@ import React, { useRef } from 'react';
 import { useFrame, useLoader } from '@react-three/fiber';
 import { TextureLoader } from 'three/src/loaders/TextureLoader';
 
-const Globe = () => {
+interface Props {
+    position: number[]
+}
+
+const Globe: React.FC<Props>  = ({ position }) => {
 
     const earthMesh = useRef<THREE.Mesh>(null!);
 
@@ -15,7 +19,7 @@ const Globe = () => {
     });
 
     return(
-        <mesh ref={earthMesh}>
+        <mesh ref={earthMesh} position={[position[0], position[1], position[2]]} >
             <sphereGeometry args={[2,10,14]} />
             <meshBasicMaterial map={colorMap} />
         </mesh>

@@ -12,7 +12,7 @@ const GlobeContainer = () => {
                 <OrbitControls />
                 <ambientLight intensity={0.2} />
                 <directionalLight />
-                <Globe />
+                <Globe position={[0, 0, 0]} />
             </Suspense>
         </Canvas>
     )
