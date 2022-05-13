@@ -22,6 +22,7 @@ import {
 import { contentInfoVariant } from 'animation';
 // Sound imports
 import { open, close } from 'assets/sounds';
+import { main } from 'assets/AlienGame/sounds';
 
 interface Props {
     appRef: any
@@ -68,7 +69,10 @@ const AlienGame = (props: Props) => {
             <AlienFileContainer 
                 onClick={(e) => {
                     (!mutedState && open.play());
-                    e.detail === 2 && setDblClicked(true)
+                    if(e.detail === 2){
+                        setDblClicked(true)
+                        main.play()
+                    }
                     if(fileIndex === -1){
                         e.detail === 2 && dispatch(addFile(fileId))
                     }
@@ -103,6 +107,7 @@ const AlienGame = (props: Props) => {
                                 className='x' 
                                 onClick={() => {
                                     (!mutedState && close.play());
+                                    (!mutedState && main.stop())
                                     setDblClicked(!dblClicked)
                                     if(fileIndex !== -1){
                                         dispatch(removeFile(fileIndex))
