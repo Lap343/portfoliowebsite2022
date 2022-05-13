@@ -1,5 +1,5 @@
 // Npm imports
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
 import styled from 'styled-components';
@@ -42,10 +42,27 @@ const AlienGame = (props: Props) => {
     // React state
     const [dblClicked, setDblClicked] = useState<boolean>(false);
     const [fileIndex, setFileIndex] = useState<number>(0);
+    const [started, setStarted] = useState<boolean>(false);
+    const [score, setScore] = useState<number>(0);
+
+    const handleKeyDown = useCallback((e: any) => {
+        if(e.code === 'Space'){
+            setStarted(true)
+        }
+    }, []);
 
     useEffect(() => {
         setFileIndex(fileIndexCheck(fileOrder, fileId))
     }, [fileOrder])
+
+    useEffect(() => {
+        window.addEventListener('keydown', handleKeyDown);
+
+        // cleanup this component
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [handleKeyDown]);
 
     return(
         <>
@@ -96,11 +113,32 @@ const AlienGame = (props: Props) => {
                                         dispatch(removeFile(fileIndex))
                                     }
                                     setFileIndex(-1)
+                                    setStarted(false)
+                                    setScore(0)
                                 }}
                             >X</div>
                         </ContentInfoHeader>
 
-                        <AlienGameCanvas />
+                        {!started && 
+                            <>
+                                <StartScreen>
+                                    <div className="title">Alien Invasion!!!</div>
+                                    <div className="clickStart">
+                                        Hit the spacebar to start!
+                                    </div>
+                                </StartScreen>
+                                <StartScreenBottom>
+                                    <div>Press the spacebar to shoot!</div>
+                                    <div>Press the left/right arrows to go left/right!</div>
+                                </StartScreenBottom>
+                            </>
+                        }
+                        {started && 
+                            <ScoreDisplay>
+                                <div>Score: {score}</div>
+                            </ScoreDisplay>
+                        }
+                        <AlienGameCanvas score={score} setScore={setScore} started={started} />
 
                     </ContentInfoContainer>
                 }
@@ -110,7 +148,6 @@ const AlienGame = (props: Props) => {
 };
 
 const AlienFileContainer = styled.div`
-    /* position: relative; */
     width: 9.5em;
     height: 10em;
     padding: 0.5em 0.5em;
@@ -123,5 +160,44 @@ const AlienFileContainer = styled.div`
 const AlienFileImg = styled.img`
     width: 10em;
 `
+const StartScreen = styled.div`
+    color: white;
+    position: absolute;
+    top: 12em;
+    left: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
+
+    & .title{
+        font-size: 4em;
+    }
+
+    & .clickStart{
+        color: black;
+        font-size: 2em;
+        background-color: grey;
+        border-radius: 25px;
+        padding: 0.2em;
+    }
+`
+const StartScreenBottom = styled.div`
+    color: white;
+    width: 100%;
+    padding-bottom: 0.5em;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+`
+const ScoreDisplay = styled.div`
+    font-size: 1.75em;
+    color: white;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding: 0.5em;
+`
 export default AlienGame;

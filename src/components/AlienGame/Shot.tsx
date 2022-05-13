@@ -9,9 +9,11 @@ interface Props {
     playerPos: number
     setShot: Function
     name: string
+    setScore: Function
+    score: number
 };
 
-const Shot: React.FC<Props> = ({ playerPos, setShot, name }) => {
+const Shot: React.FC<Props> = ({ playerPos, setShot, name, setScore, score }) => {
 
     const three = useThree();
 
@@ -54,6 +56,7 @@ const Shot: React.FC<Props> = ({ playerPos, setShot, name }) => {
             ){
                 state.set(state => {
                     explodeCheck()
+                    setScore(score += 100)
                     let setEnemyArray = state.scene.children.filter(element => element.name.includes('enemy'))
                     setEnemyArray[i].visible = false
                 })

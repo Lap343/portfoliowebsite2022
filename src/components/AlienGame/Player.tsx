@@ -9,7 +9,12 @@ import SpaceShuttel from 'assets/AlienGame/Models/SpaceShuttel';
 import { lazer1, lazer2, lazer3 } from 'assets/AlienGame/sounds';
 import { randomNum } from 'utilities';
 
-const Player = () => {
+interface Props {
+    score: number
+    setScore: Function
+}
+
+const Player: React.FC<Props>  = ({ score, setScore }) => {
 
     const playerMesh = useRef<THREE.Mesh>(null!);
 
@@ -100,9 +105,33 @@ const Player = () => {
 
     return(
         <>
-            {shot && <Shot playerPos={xPos} setShot={setShot} name='shot1' />}
-            {shot2 && <Shot playerPos={xPos2} setShot={setShot2} name='shot2' />}
-            {shot3 && <Shot playerPos={xPos3} setShot={setShot3} name='shot3' />}
+            {shot && 
+                <Shot 
+                    playerPos={xPos} 
+                    setShot={setShot} 
+                    name='shot1' 
+                    setScore={setScore} 
+                    score={score}
+                />
+            }
+            {shot2 && 
+                <Shot 
+                    playerPos={xPos2} 
+                    setShot={setShot2} 
+                    name='shot2' 
+                    setScore={setScore} 
+                    score={score}
+                />
+            }
+            {shot3 && 
+                <Shot 
+                    playerPos={xPos3} 
+                    setShot={setShot3} 
+                    name='shot3' 
+                    setScore={setScore} 
+                    score={score}
+                />
+            }
             <mesh ref={playerMesh} position={[0, -3, 0]} name={'player'} >
                 <SpaceShuttel position={[0.25, -0.5, 0]} scale={0.25} rotation={[0, 1.5, 0]} />
             </mesh>
