@@ -1,6 +1,9 @@
 // Npm imports
 import React, { useRef } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
+// Sound imports
+import { explode1, explode2, explode3 } from 'assets/AlienGame/sounds';
+import { randomNum } from 'utilities';
 
 interface Props {
     playerPos: number
@@ -17,6 +20,20 @@ const Shot: React.FC<Props> = ({ playerPos, setShot, name, setScore, score }) =>
     const enemyArray = three.scene.children.filter(element => element.name.includes('enemy'));
 
     const shotMesh1 = useRef<THREE.Mesh>(null!);
+    
+    const explodeCheck = () => {
+        switch(randomNum(3)){
+            case 1:
+                explode1.play();
+                break;
+            case 2:
+                explode2.play();
+                break;
+            case 3:
+                explode3.play();
+                break;
+        }
+    }
 
     useFrame((state) => {
         shotMesh1.current!.position.y += 0.2;
