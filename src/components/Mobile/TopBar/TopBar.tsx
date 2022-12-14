@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import battery0 from "assets/mobile/battery0.png";
 
 const TopBarContainer = styled.div`
   display: flex;
   flex-flow: column;
-  background-color: rgba(0, 0, 0, 0.35);
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
-  padding: 0.5em 0;
+  font-size: 1.1em;
+  height: 1.4em;
+  padding: 0.5em;
 `;
 
 const WebsiteName = styled.div``;
@@ -23,8 +26,11 @@ const IconContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   position: relative;
-  top: -1.2em;
-  height: 0;
+  top: -1.4em;
+`;
+
+const BatteryImg = styled.img`
+  height: 1.5em;
 `;
 
 export const TopBar = () => {
@@ -48,7 +54,12 @@ export const TopBar = () => {
             date.toLocaleTimeString().slice(8)}
         </div>
       </ClockContainer>
-      <IconContainer>Icons</IconContainer>
+      <IconContainer>
+        <BatteryImg
+          src={battery0}
+          alt="Battery icon displaying a almost dead battery"
+        />
+      </IconContainer>
     </TopBarContainer>
   );
 };
