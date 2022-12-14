@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const TopBarContainer = styled.div`
@@ -9,11 +9,29 @@ const TopBarContainer = styled.div`
   padding: 0.5em 0;
 `;
 
+const ClockContainer = styled.div``;
+
 export const TopBar = () => {
+  const [date, setDate] = useState(new Date());
+
+  const updateClock = () => {
+    setTimeout(() => {
+      setDate(new Date());
+    }, 15000);
+  };
+
+  useEffect(() => {
+    updateClock();
+  }, [date]);
   return (
     <TopBarContainer>
       <div>Mypcand.me</div>
-      <div>Time</div>
+      <ClockContainer>
+        <div>
+          {date.toLocaleTimeString().slice(0, 5) +
+            date.toLocaleTimeString().slice(8)}
+        </div>
+      </ClockContainer>
       <div>Icons</div>
     </TopBarContainer>
   );
